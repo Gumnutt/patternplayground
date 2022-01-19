@@ -1,14 +1,17 @@
 <template>
-  <vue-slider
-    v-model="value"
-    :data="frequencies"
-    :contained="true"
-    :min="0.2"
-    :max="1"
-    :interval="0.2"
-    :railStyle="{ 'background-color': 'green' }"
-    :processStyle="{ 'background-color': 'red' }"
-  ></vue-slider>
+  <div>
+    <h3>Frequency</h3>
+    <vue-slider
+      v-model="value"
+      :data="frequencies"
+      :contained="true"
+      :min="0.2"
+      :max="1"
+      :interval="0.2"
+      :railStyle="{ 'background-color': 'rgb(209 213 219)' }"
+      :processStyle="{ 'background-color': 'rgb(31 41 55)' }"
+    ></vue-slider>
+  </div>
 </template>
 
 <script>
@@ -31,12 +34,6 @@ export default {
       this.$emit("updateFrequency", this.currentFrequency)
     },
   },
-  // methods: {
-  //   updateFrequency() {
-  //     this.currentFrequency = this.value
-  //     this.$emit("updateFrequency", this.value)
-  //   },
-  // },
 }
 </script>
 

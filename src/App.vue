@@ -1,6 +1,6 @@
 <template>
   <Nav />
-  <router-view></router-view>
+  <router-view :key="$route.fullPath"></router-view>
 </template>
 
 <script>
@@ -13,3 +13,12 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap");
+html,
+body {
+  font-family: "Lexend", sans-serif;
+  color: #646d7b;
+}
+</style>

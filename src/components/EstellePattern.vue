@@ -2,83 +2,21 @@
   <div>
     <!-- prettier-ignore -->
     <css-doodle click-to-update use="var(--rule)" :style="cssVars">
-      @grid: 2x2 / 18rem;
-      grid-gap: 0px;
-      color: #fff;
-      
+      <grid :ratio="ratio"></grid>
     </css-doodle>
-    <controls @getFrequency="getFrequencyValue"></controls>
+    <controls @getFrequency="getFrequencyValue" @getRatio="getRatioValue"></controls>
   </div>
 </template>
 
 <script>
-import Controls from "@/components/Controls/Controls"
-import "css-doodle"
+import GridMixin from "./mixins/grid"
 export default {
-  data() {
-    return {
-      frequency: 1,
-    }
-  },
-  components: { Controls },
-  watch: {
-    frequency() {
-      console.log(this.frequency)
-      this.update()
-    },
-  },
-  methods: {
-    update() {
-      const doodle = document.querySelector("css-doodle")
-      console.log("update Function", doodle)
-      doodle.update()
-    },
-    getFrequencyValue(e) {
-      this.frequency = e
-      this.update()
-    },
-  },
-  computed: {
-    cssVars() {
-      return {
-        "--frequency": this.frequency,
-      }
-    },
-  },
+  mixins: [GridMixin],
 }
 </script>
 
-<style>
-css-doodle {
-  /* prettier-ignore */
-  --randomColor: @p(#9be9e7, #5dd1db, #2d60b5, #40a1cb, #000);
-  --frequency: 1;
-  /* prettier-ignore */
-  --rule: (
-    @random(var(--frequency)) {
-      background: @doodle(
-        @grid: @r4 / 100%;
-        grid-gap: 0px;
-        transform: rotate(@rand(360deg));
-        background-image: @svg(
-          @p(
-            <svg viewBox="0 0 88.74 114.6">
-              @M50(<path fill="#fc6232" d="M0 0H88.74v61.95l-8.37 15.07-2.42 9.86-.37 3.35-2.6 8.19-2.79 4.84-2.61 4.27-4.28 7.07h-1.67L50.98 97.86 37.02 81.67 25.86 65.86 10.98 42.98l-1.31-2.61-3.53-15.81-3.16-13.21L.93 2.98 0 0z" />)
-            </svg>,
-            <svg viewBox="0 0 87.07 263.44">
-              @M50(<path fill="#fc6232" d="M16.19 0h49.67l18.42 2.79 2.79 24v77.58l-4.47 34.61-7.25 40.74L65.3 226.6l-13.67 36.84h-8.1L10.05 253.4l-7.82-27.91L0 202.05v-56.93l8.93-80.93 3.91-29.59L16.19 0z" />)
-            </svg>,
-            <svg viewBox="0 0 218.46 505.95">
-              @M50(<path fill="#fc6232" d="M0 0h65.86l12.35.35 10.46.28h71.58l9.49.28h47.73l.41 18.35V37.67l.19 2.8.12 2.53v6.77l.16 11.11v2.33l.12 7.58v9.86l-.17 4.08-.24 3.91-.18 1.92-.56 4.67-.13 1.85-.28 4.68-.39 5.02-.55 4.95-.49 3.66-.91 5.27-.63 7.82-1.15 9.8-.84 8.09-1.67 13.68-1.54 10.32-.69 6.84-.84 7.95-1.26 13.68-2.09 13.25-2.65 12.14-.98 6.56-.83 7.95-.56 11.03-.7 15.9-.56 3.77-1.95 5.86-2.38 8.93-2.09 10.19-3.21 11.3-2.28 19.12-2.6 12.65-2.98 23.07-2.23 16-2.61 10.42-5.58 25.67-4.09 20.09-1.49 15.26-2.6 10.79-3.72 11.16-2.98 6.7-6.7 14.51-4.46 13.4-5.63.83-4.47.56H122.93l-3.77-.7-7.53-.41-6.14-.28-4.89-.28H88.33l-6 .14-6.56-.28-1.12-5.72-1.67-7.12-12.7-40.88-13.4-53.58-8.37-40.19-11.72-48.56-11.72-73.67-5.02-21.77L0 162.42V0z"/>)
-            </svg>,
-            <svg viewBox="0 0 301.53 367.26">
-              @M50(<path fill="#fc6232" d="M0 324.84v-70.41l17.3-83.64L46.88 66.98 80.37 0h204.28l16.88 324.84v27.35L284.65 360l-43.53 7.25h-44.1l-46.26-2.79-45.27-4.46-42.42-7.81-39.63-12.84L0 324.84z"/>)
-            </svg>,
-          )
-        );
-        background-repeat: no-repeat;
-      );
-    }
-  );
+<style scoped>
+.container {
+  overflow: visible;
 }
 </style>
