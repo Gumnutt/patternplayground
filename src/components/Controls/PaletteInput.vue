@@ -2,7 +2,7 @@
   <div class="relative" :style="colorVar">
     <button class="w-8 h-8 rounded-sm" :style="{ background: color.hex }" @click="pickerOpen = !pickerOpen"></button>
     <div class="absolute transform -translate-x-1/2 left-1/2">
-      <color-picker v-if="pickerOpen" v-model="color" @changed="updateValue" />
+      <color-picker v-if="pickerOpen" v-model="color" />
     </div>
   </div>
 </template>
@@ -46,13 +46,7 @@ export default {
       return "--color" + (this.index + 1) + ":" + this.color.hex
     },
   },
-  methods: {
-    updateValue(value) {
-      console.log(value)
-      this.color = value
-      this.$emit("updateColor", { color: this.color, index: this.index })
-    },
-  },
+  methods: {},
 }
 </script>
 

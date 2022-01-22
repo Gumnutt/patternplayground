@@ -16,13 +16,10 @@
 export default {
   methods: {
     save() {
-      const button = document.querySelector("button#export")
       const doodle = document.querySelector("css-doodle")
-      button.addEventListener("click", () => {
-        doodle.export({
-          scale: 6,
-          download: true,
-        })
+      doodle.export({
+        scale: 6,
+        download: true,
       })
     },
   },

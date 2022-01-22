@@ -3,7 +3,7 @@
     <ratio @updateRatio="updateRatio" class="mb-8"></ratio>
     <frequency @updateFrequency="updateValue" class="mb-8"></frequency>
     <palette @updatePalette="updatePalette" @colorSet="updateColor" class="mb-8"></palette>
-    <div class="flex mb-8">
+    <div class="inline-flex my-8">
       <redraw class="mr-3"></redraw>
       <export></export>
     </div>
@@ -18,6 +18,7 @@ import Export from "@/components/Controls/Export"
 import Redraw from "@/components/Controls/Redraw"
 export default {
   components: { Frequency, Ratio, Palette, Export, Redraw },
+  inject: ["modifiers"],
   data() {
     return {
       frequency: 1,
@@ -28,6 +29,9 @@ export default {
   watch: {
     frequency(value) {
       this.$emit("getFrequency", value)
+    },
+    layout(value) {
+      this.$emit("getLayout", value)
     },
     palette(palette) {
       this.$emit("getPalette", palette)
@@ -42,6 +46,9 @@ export default {
     },
     updateRatio(ratio) {
       this.ratio = ratio
+    },
+    updateLayout(layout) {
+      this.layout = layout
     },
     updatePalette(palette) {
       this.palette = palette

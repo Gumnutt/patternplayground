@@ -1,6 +1,6 @@
 <template>
   <Nav />
-  <router-view :key="$route.fullPath"></router-view>
+  <router-view name="default" :key="$route.fullPath"></router-view>
 </template>
 
 <script>

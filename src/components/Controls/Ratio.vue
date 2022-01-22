@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="modifiers.options.required.ratio">
     <h3>Columns and rows</h3>
     <ul class="flex justify-between w-full max-w-xl">
       <li
@@ -29,6 +29,7 @@ export default {
       currentRatio: "2x3",
     }
   },
+  inject: ["modifiers"],
   methods: {
     setRatio(ratio) {
       this.currentRatio = ratio

@@ -1,6 +1,4 @@
 #SingleCell {
-  /* prettier-ignore */
-  --randomColor: @p(var(--color1), var(--color2), var(--color3), var(--color4), var(--color5), var(--color6));
   --frequency: 1;
   /* prettier-ignore */
   --rule: (
@@ -8,22 +6,21 @@
       background: var(--randomColor); 
       transition: @r(200ms, 500ms);
       clip-path: @p(
+        ellipse(100% 100% at @p('0 0', '0 100%', '100% 0', '100% 100%')),
         polygon(@p(
           '100% 100%, 100% 0, 0 100%',
           '100% 100%, 0 0, 0 100%',
           '100% 0, 0 0, 0 100%',
           '100% 0, 0 0, 100% 100%',
           )),
-        ellipse(100% 100% at @p('0 0', '0 100%', '100% 0', '100% 100%')),
         circle(50%),
         polygon(0 0, 100% 0%, 100% 100%, 0% 100%),
       ) ;
     }
   );
 }
+
 #MultiCell {
-  /* prettier-ignore */
-  --randomColor: @p(var(--color1), var(--color2), var(--color3), var(--color4), var(--color5), var(--color6));
   --frequency: 1;
   /* prettier-ignore */
   --rule: (
@@ -44,9 +41,8 @@
     }
   );
 }
+
 #Stroke {
-  /* prettier-ignore */
-  --randomColor: @p(var(--color1), var(--color2), var(--color3), var(--color4), var(--color5), var(--color6));
   --frequency: 1;
   /* prettier-ignore */
   --rule: (
@@ -59,14 +55,13 @@
   );
 }
 #Estelle {
-  /* prettier-ignore */
-  --randomColor: @p(#9be9e7, #5dd1db, #2d60b5, #40a1cb, #000);
   --frequency: 1;
   /* prettier-ignore */
   --rule: (
     @random(var(--frequency)) {
-      background-size: @r(40%,80%);
+      background-size: @r(20%,60%);
         transform: rotate(@rand(360deg));
+        color: var(--randomColor);  
         background-image: @svg(
           @p(
             <svg viewBox="0 0 88.74 114.6">
@@ -86,4 +81,25 @@
         background-repeat: no-repeat;
     }
   );
+}
+#PlayingCard {
+  /* prettier-ignore */
+  --rule:(
+    background: var(--randomColor);
+    :after {
+       content: '';
+       @size: 100%;
+       position: absolute;
+       background:
+        radial-gradient(
+          var(--randomColor) @r(10%, 30%),
+          transparent 0
+        ),
+        @multiple(4,
+        radial-gradient(
+        circle at @pick(-40% -40%, 140% 140%, -40% 140%, 140% -40%),
+        @pick(#112F41, #068587, #4FB99F, #F2B134, #ED553B) 50%, transparent 50%
+    ));
+    }
+  )
 }

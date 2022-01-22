@@ -1,9 +1,7 @@
 <template>
   <article class="flex w-full h-screenfit">
     <main class="flex items-center justify-center flex-1">
-      <css-doodle use="var(--rule)" :style="[cssVars, colorVars.colors, colorVars]" :id="componentId">
-        <grid :ratio="ratio" :layout="layout"></grid>
-      </css-doodle>
+      <doodle></doodle>
     </main>
     <aside class="flex items-center justify-center flex-1 w-full bg-gray-50">
       <controls
@@ -19,8 +17,10 @@
 </template>
 
 <script>
-import GridMixin from "./mixins/grid"
+import Doodle from "@/components/Doodle"
+import Controls from "@/components/Controls/Controls"
+
 export default {
-  mixins: [GridMixin],
+  components: { Controls, Doodle },
 }
 </script>

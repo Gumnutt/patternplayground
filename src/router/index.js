@@ -1,8 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router"
 import Home from "@/components/Home"
-// import SingleCell from "@/components/SingleCell"
-// import MultiCell from "@/components/MultiCell"
-// import Estelle from "@/components/EstellePattern"
 import Doodle from "@/components/Doodle"
 
 const routes = [
@@ -29,6 +26,11 @@ const routes = [
   {
     path: "/stroke",
     name: "Stroke",
+    component: Doodle,
+  },
+  {
+    path: "/playing-card",
+    name: "PlayingCard",
     component: Doodle,
   },
 ]

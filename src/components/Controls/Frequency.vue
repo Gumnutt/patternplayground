@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="modifiers.options.required.frequency">
     <h3>Frequency</h3>
     <vue-slider
       v-model="value"
@@ -23,11 +23,12 @@ export default {
   },
   data() {
     return {
-      value: 1,
+      value: this.modifiers.frequency || 1,
       frequencies: [0.2, 0.4, 0.6, 0.8, 1],
-      currentFrequency: 1,
+      currentFrequency: this.modifiers.frequency || 1,
     }
   },
+  inject: ["modifiers"],
   watch: {
     value(newValue) {
       this.currentFrequency = newValue

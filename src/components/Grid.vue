@@ -1,7 +1,7 @@
 <template>
   <div :style="setGrid">
     <!-- prettier ignore -->
-    :doodle {@size: 360px 540px; overflow:hidden; text-align:center; box-sizing:border-box }
+    :doodle {@size: {{ layout }}; overflow:hidden; text-align:center; box-sizing:border-box }
     <!-- prettier ignore -->
     :container { overflow:hidden; }
   </div>
@@ -14,6 +14,15 @@ export default {
       type: String,
       default: "2x3",
     },
+    layout: {
+      type: String,
+      default: "",
+    },
+  },
+  created() {
+    this.$nextTick(() => {
+      this.orientation
+    })
   },
   watch: {
     ratio() {
@@ -24,6 +33,27 @@ export default {
     setGrid() {
       return this.updateGrid()
     },
+    // orientation() {
+    //   if (this.layout === "portait") {
+    //     return {
+    //       width: "22.5rem",
+    //       height: "33.75rem",
+    //     }
+    //   }
+    //   if (this.layout === "landscape") {
+    //     return {
+    //       width: "33.75rem",
+    //       height: "22.5rem",
+    //     }
+    //   }
+    //   if (this.layout === "square") {
+    //     return {
+    //       width: "33.75rem",
+    //       height: "33.75rem",
+    //     }
+    //   }
+    //   return ""
+    // },
   },
   methods: {
     updateGrid() {
@@ -31,9 +61,6 @@ export default {
         const doodle = document.querySelector("css-doodle")
         doodle.grid = this.ratio
       })
-    },
-    setId() {
-      console.log(this.$route)
     },
   },
 }
