@@ -56,13 +56,16 @@ export default {
       const palette = this.palette
       let paletteVars = ""
       let colorVar = ""
-      for (let i = 0; i < palette.length; i++) {
+      for (let i = 1; i < palette.length; i++) {
         const color = palette[i]
         const varName = `--color${i}`
         paletteVars += `${varName}: ${color};`
-        colorVar += `var(${varName}), `
+        if (palette.length == 2) {
+          colorVar += `var(${varName})`
+        } else {
+          colorVar += `var(${varName}),`
+        }
       }
-      console.log(colorVar)
       return { colors: paletteVars, "--randomColor": `@p(${colorVar})` }
     },
   },

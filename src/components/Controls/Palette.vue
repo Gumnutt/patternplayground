@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       defaultColors: [],
-      colorPalette: this.modifiers.colors ? this.modifiers.colors : ["#e8e8e8", "#bdbdbd", "#a8a8a8", "#8c8c8c", "#696969"],
+      colorPalette: [],
     }
   },
   inject: ["modifiers"],
@@ -39,7 +39,6 @@ export default {
     updateColor(color) {
       this.colorPalette[color.index] = color.color.hex
       this.$emit("updatePalette", this.colorPalette)
-      console.log(this.colorPalette)
     },
     colorSet() {
       this.$emit("colorSet")
