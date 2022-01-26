@@ -56,13 +56,13 @@
     }
   },
   "Estelle": {
-    "colors": [],
+    "colors": ["#fc6232"],
     "frequency": "",
     "ratio": "",
     "layout": "",
     "options": {
       "required": {
-        "colors": false,
+        "colors": true,
         "frequency": true,
         "ratio": true,
         "layout": false

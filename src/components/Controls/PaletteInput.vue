@@ -1,5 +1,5 @@
 <template>
-  <div class="relative" :style="colorVar" v-click-away="closePicker">
+  <div class="relative" v-click-away="closePicker">
     <button class="w-8 h-8 rounded-sm" :style="{ background: color.hex }" @click="pickerOpen = !pickerOpen"></button>
     <div class="absolute transform -translate-x-1/2 left-1/2">
       <color-picker v-if="pickerOpen" v-model="color" />

@@ -61,11 +61,11 @@
     @random(var(--frequency)) {
       background-size: @r(20%,60%);
         transform: rotate(@rand(360deg));
-        color: var(--randomColor);  
-        background-image: @svg(
+        background-color: var(--randomColor);  
+        mask-image: @svg(
           @p(
-            <svg viewBox="0 0 88.74 114.6">
-              <path fill="#fc6232" d="M0 0H88.74v61.95l-8.37 15.07-2.42 9.86-.37 3.35-2.6 8.19-2.79 4.84-2.61 4.27-4.28 7.07h-1.67L50.98 97.86 37.02 81.67 25.86 65.86 10.98 42.98l-1.31-2.61-3.53-15.81-3.16-13.21L.93 2.98 0 0z" />
+            <svg viewBox="0 0 88.74 114.6" style="color: var(--randomColor)">
+              <path fill="currentColor" d="M0 0H88.74v61.95l-8.37 15.07-2.42 9.86-.37 3.35-2.6 8.19-2.79 4.84-2.61 4.27-4.28 7.07h-1.67L50.98 97.86 37.02 81.67 25.86 65.86 10.98 42.98l-1.31-2.61-3.53-15.81-3.16-13.21L.93 2.98 0 0z" />
             </svg>,
             <svg viewBox="0 0 87.07 263.44">
               <path fill="#fc6232" d="M16.19 0h49.67l18.42 2.79 2.79 24v77.58l-4.47 34.61-7.25 40.74L65.3 226.6l-13.67 36.84h-8.1L10.05 253.4l-7.82-27.91L0 202.05v-56.93l8.93-80.93 3.91-29.59L16.19 0z" />
@@ -78,7 +78,7 @@
             </svg>,
           )
         );
-        background-repeat: no-repeat;
+        mask-repeat: no-repeat;
     }
   );
 }
